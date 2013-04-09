@@ -2,12 +2,12 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://neshmi.github.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
+url: http://matt.averails.com
+title: Matthew Vincent
+subtitle: "Husband, Rubyist, Hobbyist"
 author: Matthew Vincent
 simple_search: http://google.com/search
-description: 
+description: "Coding for fun and profit"
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -93,3 +93,6 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+#LinkedIN
+linkedin: mlvincent
