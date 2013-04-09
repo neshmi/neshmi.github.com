@@ -10,6 +10,8 @@ categories: [Batmanjs, CouchDB, CouchApp]
 
 Okay, not really.  It was actually really hot and only slightly hazy.  I was in Jordan field testing OpenDig, an iOS application which took advantage of [CouchDB](http://couchdb.apache.org) for easy replication, synchronization and portability of our archaeological field database.  It was at this point that I decided we really needed to use a  to have an easy way to view the data on the fly.  Sure, we have a full Ruby on Rails application, but I wanted to have some separation between the data being collected in the field and the data that was ready for publication.  It seemed like a CouchApp is the perfect solution; it travels with the data and can provide a structured way to read the data without having to deal with the raw JSON documents.
 
+<!-- more -->
+
 Of course, none of the solutions were appealing to me at the time.  Coming from the world of Ruby on Rails I've found myself loving the beauty of Ruby code and the baked in conventions of Rails.  The various Javascript frameworks I played with just left me feeling like I was missing something.  That was, until I discovered [BatmanJS](http://batmanjs.org) a few weeks ago.  I decided to try and make Batman work for my CouchApp... this is the story of that trial...
 
 ![always be batman](/images/batman.jpg)
