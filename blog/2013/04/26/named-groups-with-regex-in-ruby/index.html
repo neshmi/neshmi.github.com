@@ -1,12 +1,11 @@
 
-
 <!DOCTYPE html>
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Matthew Vincent</title>
+  <title>Named groups with Regex in Ruby - Matthew Vincent</title>
   <meta name="author" content="Matthew Vincent">
   <link rel="author" href="humans.txt">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -14,7 +13,7 @@
   
     
   
-  <meta name="description" content=" Coding for fun and profit ">
+  <meta name="description" content="Turning Regex matches into named Groups Regex is an incredibly powerful tool, and with Ruby 1.9 and above, we can now take advantage of named groups &hellip;">
   
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -22,17 +21,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://matt.averails.com/">
+  <link rel="canonical" href="http://matt.averails.com/blog/2013/04/26/named-groups-with-regex-in-ruby/">
   <link href="/favicon.png" rel="icon">
   <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Matthew Vincent" type="application/atom+xml">
   <meta name="og:type" content="website" />
   <meta name="og:site_name" content="Matthew Vincent" />
-  <meta name="og:title" content="Matthew Vincent" />
-  <meta name="og:description" content=" Coding for fun and profit " />
-  <meta name="og:url" content="http://matt.averails.com/index.html"/>
-  <meta name="url" content="http://matt.averails.com/index.html">
+  <meta name="og:title" content="Named groups with Regex in Ruby" />
+  <meta name="og:description" content="Turning Regex matches into named Groups Regex is an incredibly powerful tool, and with Ruby 1.9 and above, we can now take advantage of named groups &hellip;" />
+  <meta name="og:url" content="http://matt.averails.com/blog/2013/04/26/named-groups-with-regex-in-ruby/"/>
+  <meta name="url" content="http://matt.averails.com/blog/2013/04/26/named-groups-with-regex-in-ruby/">
+  
+  <meta name="subject" content="regexrubytips"/>
+  <meta name="category" content="regexrubytips"/>
   
   <meta name="distribution" content="global">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -56,75 +58,37 @@
 </head>
 
 <body   >
-  <div id="front-wrapper">
-  <div id="hero">
-    <div id="hero-inner" class="container">
-      <div class="span10 offset1">
-  <h1>
-    Matthew Vincent
-  </h1>
-  <h2>Husband, Rubyist, Hobbyist</h2>
-</div>
-
-    </div>
+  <nav role="navigation"><div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="/">Matthew Vincent</a>
+    <ul class="nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/archives">Archives</a></li>
+    </ul>
+    <ul class="nav" data-subscription="rss">
+      <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+      
+    </ul>
+      
+    <form class="navbar-form" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:matt.averails.com" />
+        <input class="span2" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+      
+    
   </div>
-  <section id="sub-hero">
+</div>
+</nav>
+  <div class="wrapper_single">
     <div class="container">
-      <div class="row">
-  <div class="span4">
-    <h2>about me</h2>
-<p>Perhaps I&#8217;m confused.  Perhaps not.  I&#8217;m an anthropological archaeologist and a Rubyist.  It is hard to say which one I love more.  Right now, I combine these two passions in my life, using my love of programming, technology and electronics to aid in archaeological fieldwork.  This can make for a more objective science in the field and aid in open data sharing back home.  I authored [OpenDig](http://www.opendig.org) to help with the field collection which now has taken form in the way of three different applications, a full Ruby on Rails application, a CouchApp, and an iOS application.  As more tools are created they will be posted to this space.  Stay tuned!!</p>
-
-  </div>
-  <div class="span6">
-    
-<h2>recent public projects</h2>
-<dl id="gh_repos" class="dl-horizontal" data-github-user="neshmi" data-github-repo-count="0" data-github-skip-forks="true">
-  <dd class="loading">Status updating&#8230;</dd>
-</dl>
-<script src="/javascripts/github.js" type="text/javascript"> </script>
-<script src="/javascripts/libs/jXHR.js" type="text/javascript"> </script>
-
-
-  </div>
-  <div class="span2">
-    <h2>found on</h2>
-
-<a href="https://github.com/neshmi/" rel="tooltip" title="Github"><img class="social_icon" title="Github" alt="github icon" src="/images/glyphicons_381_github.png"></a>
-
-
-
-
-
-<a href="http://www.linkedin.com/in/mlvincent" rel="tooltip" title="Linkedin"><img class="social_icon" title="Linkedin" alt="Linkedin icon" src="/images/glyphicons_377_linked_in.png"></a>
-
-
-
-<a href="http://twitter.com/neshmi" rel="tooltip" title="Twitter"><img class="social_icon" title="Twitter" alt="Twitter icon" src="/images/glyphicons_391_twitter_t.png"></a>
-
-
-
-
-
-
-
-
-  </div>
-</div>
-
-    </div>
-  </section>
-  <div class="container">
-    <div class="row" id="post-container">
-    
-    
-    
-      <article class="span4">
+      <article class="span8 offset2" role="article">
         <div class="article-format">
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/04/26/named-groups-with-regex-in-ruby/">Named Groups With Regex in Ruby</a></h1>
+      <h1 class="entry-title">Named Groups With Regex in Ruby</h1>
     
     
       <p class="meta">
@@ -161,7 +125,7 @@ posted in
 
 
         
-         | <a href="/blog/2013/04/26/named-groups-with-regex-in-ruby/#disqus_thread">Comments</a>
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
@@ -172,30 +136,45 @@ posted in
 
 <p>Regex is an incredibly powerful tool, and with Ruby 1.9 and above, we can now take advantage of named groups.  So, let&#8217;s say that you are working with archaeological data and you see the following string:</p>
 
+<!-- more -->
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>B8K11:001</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This string actually represents the Field (B), Square (8K11), and exact Locus (001) that something might come from.  At the site of Tall al-&#8216;Umayri, these codes are constantly used, yet are not as useful for machines without first being parsed out.  Of course, Ruby will easily let one slice this all up and get the same matches, but imagine something like:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">locus_matcher</span> <span class="o">=</span> <span class="sr">%r( (?&lt;field&gt;^[a-zA-z]{1})(?&lt;square&gt;\d{1}[a-zA-Z]{1}\d{2}):(?&lt;locus&gt;\d{3}) )</span>
+</span><span class='line'><span class="n">parsed_locus_code</span> <span class="o">=</span> <span class="n">locus_matcher</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;B8K11:001&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">parsed_locus_code</span><span class="o">[</span><span class="ss">:field</span><span class="o">]</span>
+</span><span class='line'><span class="s2">&quot;B&quot;</span>
+</span><span class='line'><span class="n">parsed_locus_code</span><span class="o">[</span><span class="ss">:square</span><span class="o">]</span>
+</span><span class='line'><span class="s2">&quot;8K11&quot;</span>
+</span><span class='line'><span class="n">parsed_locus_code</span><span class="o">[</span><span class="ss">:locus</span><span class="o">]</span>
+</span><span class='line'><span class="s2">&quot;001&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pretty cool, and very useful!</p>
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/04/26/named-groups-with-regex-in-ruby/">Read on &rarr;</a>
-    </footer>
-  
 
 
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/08/batman-as-a-couchapp/">Batman as a CouchApp</a></h1>
-    
-    
-      <p class="meta">
-        
+  <footer>
+    <p class="meta">
+      
   
 
 
@@ -203,8 +182,8 @@ posted in
     <span class="byline author vcard">by <span class="fn">Matthew Vincent</span></span>
   
 
- - 
-        
+
+      
 
 
 
@@ -216,53 +195,50 @@ posted in
   
 
 
-<time datetime="2013-04-08T11:13:00-07:00" pubdate data-updated="true">Apr 8<span>th</span>, 2013</time> - 
-        
+<time datetime="2013-04-26T20:36:00-07:00" pubdate data-updated="true">Apr 26<span>th</span>, 2013</time>
+      
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/batmanjs/'>Batmanjs</a>, <a class='category' href='/blog/categories/couchapp/'>CouchApp</a>, <a class='category' href='/blog/categories/couchdb/'>CouchDB</a>
+    <a class='category' href='/blog/categories/regex/'>regex</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
   
 </span>
 
 
-        
-         | <a href="/blog/2013/04/08/batman-as-a-couchapp/#disqus_thread">Comments</a>
-        
-      </p>
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><h1>It was a dark and stormy night&#8230;</h1>
-
-<p>Okay, not really.  It was actually really hot and only slightly hazy.  I was in Jordan field testing OpenDig, an iOS application which took advantage of <a href="http://couchdb.apache.org">CouchDB</a> for easy replication, synchronization and portability of our archaeological field database.  It was at this point that I decided we really needed to use a  to have an easy way to view the data on the fly.  Sure, we have a full Ruby on Rails application, but I wanted to have some separation between the data being collected in the field and the data that was ready for publication.  It seemed like a CouchApp is the perfect solution; it travels with the data and can provide a structured way to read the data without having to deal with the raw JSON documents.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/04/08/batman-as-a-couchapp/">Read on &rarr;</a>
-    </footer>
-  
-
-
+      <div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
 </div>
 
+    
+    
+      <a class="pull-left" href="/blog/2013/04/08/batman-as-a-couchapp/" title="Previous Post: Batman as a CouchApp">&laquo; Batman as a CouchApp</a>
+    
+    
+  </footer>
+
+</div>
+
+        
+          <div class="article-format">
+            <h1>Comments</h1>
+            <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+          </div>
+        
       </article>
-    
     </div>
-      <div class="row">
-        <ul class="pager">
-          
-          
-        </ul>
-      </div>
   </div>
-</div>
-
-
   <div id="footer-widgets">
   <div class="container">
     <div class="row">
@@ -351,7 +327,10 @@ posted in
       var disqus_shortname = 'neshmi';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://matt.averails.com/blog/2013/04/26/named-groups-with-regex-in-ruby/';
+        var disqus_url = 'http://matt.averails.com/blog/2013/04/26/named-groups-with-regex-in-ruby/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

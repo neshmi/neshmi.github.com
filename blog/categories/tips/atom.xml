@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tips | Matthew Vincent]]></title>
+  <link href="http://matt.averails.com/blog/categories/tips/atom.xml" rel="self"/>
+  <link href="http://matt.averails.com/"/>
+  <updated>2013-04-26T20:52:24-07:00</updated>
+  <id>http://matt.averails.com/</id>
+  <author>
+    <name><![CDATA[Matthew Vincent]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Named groups with Regex in Ruby]]></title>
+    <link href="http://matt.averails.com/blog/2013/04/26/named-groups-with-regex-in-ruby/"/>
+    <updated>2013-04-26T20:36:00-07:00</updated>
+    <id>http://matt.averails.com/blog/2013/04/26/named-groups-with-regex-in-ruby</id>
+    <content type="html"><![CDATA[<h1>Turning Regex matches into named Groups</h1>
+
+<p>Regex is an incredibly powerful tool, and with Ruby 1.9 and above, we can now take advantage of named groups.  So, let's say that you are working with archaeological data and you see the following string:</p>
+
+<!-- more -->
+
+
+<p><code>
+B8K11:001
+</code></p>
+
+<p>This string actually represents the Field (B), Square (8K11), and exact Locus (001) that something might come from.  At the site of Tall al-'Umayri, these codes are constantly used, yet are not as useful for machines without first being parsed out.  Of course, Ruby will easily let one slice this all up and get the same matches, but imagine something like:</p>
+
+<p>```ruby
+locus_matcher = %r( (?<field><sup>[a-zA-z]{1})(?<square>\d{1}[a-zA-Z]{1}\d{2}):(?<locus>\d{3})</sup> )
+parsed_locus_code = locus_matcher.match("B8K11:001")</p>
+
+<p>parsed_locus_code[:field]
+"B"
+parsed_locus_code[:square]
+"8K11"
+parsed_locus_code[:locus]
+"001"
+```</p>
+
+<p>Pretty cool, and very useful!</p>
+]]></content>
+  </entry>
+  
+</feed>
